@@ -9,7 +9,7 @@ import shutil
 import math
 
 def get_args():
-    parser = argparse.ArgumentParser(prog="clipper", description="Still frames remover")
+    parser = argparse.ArgumentParser(prog="still-rm", description="Still frames remover")
     parser.add_argument("input", type=str, help="path to input file")
     parser.add_argument("output", type=str, help="path to output file")
     parser.add_argument("--area", type=str, dest="area", help="compare area. eg: x,y,width,height")
@@ -29,7 +29,7 @@ def main():
             os.makedirs(frames_dir)
             ffmpeg.output(input, frames_dir + '/%04d.jpg', r="2").run()
     else:
-        print("input file not exist")
+        print("input file does not exist")
         return 1
 
     ranges = get_ranges(frames_dir)
